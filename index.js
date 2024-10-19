@@ -11,11 +11,7 @@ let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
 
-// app.use(express.static('static'));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(resolve(__dirname, 'pages/index.html'));
-// });
 
 app.get('/cart-total', (req, res) => {
   const newItemPrice = parseFloat(req.query.newItemPrice);
