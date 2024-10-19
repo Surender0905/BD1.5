@@ -15,7 +15,7 @@ let loyaltyRate = 2;
 
 app.get('/cart-total', (req, res) => {
   const newItemPrice = parseFloat(req.query.newItemPrice);
-  const cartTotal = parseFloat(req.query.cartTotal);
+  const cartTotal = parseFloat(req.query.cartTotal)||1;
 
   const totalCartValue = newItemPrice + cartTotal;
 
