@@ -11,15 +11,19 @@ let taxRate = 5;
 let discountPercentage = 10;
 let loyaltyRate = 2;
 
+// app.use(express.static('static'));
 
+// app.get('/', (req, res) => {
+//   res.sendFile(resolve(__dirname, 'pages/index.html'));
+// });
 
 app.get('/cart-total', (req, res) => {
   const newItemPrice = parseFloat(req.query.newItemPrice);
-  const cartTotal = parseFloat(req.query.cartTotal)||1;
+  const cartTotal = parseFloat(req.query.cartTotal);
 
   const totalCartValue = newItemPrice + cartTotal;
 
-  res.send(totalCartValue);
+  res.send(totalCartValue.toString());
 });
 
 app.get('/membership-discount', (req, res) => {
@@ -34,7 +38,7 @@ app.get('/membership-discount', (req, res) => {
   }
 
   console.log(finalPrice, isMember, 'price');
-  res.send(finalPrice);
+  res.send(finalPrice.toString());
 });
 
 app.get('/calculate-tax', (req, res) => {
@@ -42,7 +46,7 @@ app.get('/calculate-tax', (req, res) => {
 
   const taxAmount = cartTotal * taxRate;
 
-  res.send(taxAmount);
+  res.send(taxAmount.toString());
 });
 
 app.get('/estimate-delivery', (req, res) => {
@@ -59,7 +63,7 @@ app.get('/estimate-delivery', (req, res) => {
     return res.send('Invalid shipping method');
   }
 
-  res.send(deliveryDays);
+  res.send(deliveryDays.toString());
 });
 
 app.get('/shipping-cost', (req, res) => {
@@ -74,7 +78,7 @@ app.get('/shipping-cost', (req, res) => {
 
   const shippingCost = weight * distance * 0.1;
 
-  res.send(shippingCost.toFixed(2));
+  res.send(`${shippingCost.toFixed(2)}`);
 });
 
 app.get('/loyalty-points', (req, res) => {
@@ -86,7 +90,7 @@ app.get('/loyalty-points', (req, res) => {
 
   const loyaltyPoints = purchaseAmount * loyaltyRate;
 
-  res.send(loyaltyPoints);
+  res.send(`${loyaltyPoints}`);
 });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
