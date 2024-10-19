@@ -19,7 +19,7 @@ app.get('/cart-total', (req, res) => {
 
   const totalCartValue = newItemPrice + cartTotal;
 
-  res.send(totalCartValue.toString());
+  res.send(totalCartValue);
 });
 
 app.get('/membership-discount', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/membership-discount', (req, res) => {
   }
 
   console.log(finalPrice, isMember, 'price');
-  res.send(finalPrice.toString());
+  res.send(finalPrice);
 });
 
 app.get('/calculate-tax', (req, res) => {
@@ -42,7 +42,7 @@ app.get('/calculate-tax', (req, res) => {
 
   const taxAmount = cartTotal * taxRate;
 
-  res.send(taxAmount.toString());
+  res.send(taxAmount);
 });
 
 app.get('/estimate-delivery', (req, res) => {
@@ -59,7 +59,7 @@ app.get('/estimate-delivery', (req, res) => {
     return res.send('Invalid shipping method');
   }
 
-  res.send(deliveryDays.toString());
+  res.send(deliveryDays);
 });
 
 app.get('/shipping-cost', (req, res) => {
@@ -74,7 +74,7 @@ app.get('/shipping-cost', (req, res) => {
 
   const shippingCost = weight * distance * 0.1;
 
-  res.send(`${shippingCost.toFixed(2)}`);
+  res.send(shippingCost.toFixed(2));
 });
 
 app.get('/loyalty-points', (req, res) => {
@@ -86,7 +86,7 @@ app.get('/loyalty-points', (req, res) => {
 
   const loyaltyPoints = purchaseAmount * loyaltyRate;
 
-  res.send(`${loyaltyPoints}`);
+  res.send(loyaltyPoints);
 });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
